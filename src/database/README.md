@@ -1,4 +1,4 @@
-SQL Queries
+# SQL Analysis Queries
 
 **1st Query:** Retrieve All Student Information
 
