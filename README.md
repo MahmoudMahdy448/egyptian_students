@@ -1,6 +1,6 @@
-# Data Engineering Project: Computer Science Students Analysis
+# Data Engineering Project: Egyptian Students Performance Analysis
 
-This project analyzes computer science student data through a comprehensive data engineering pipeline.
+This project analyzes Egyptian Students Performance data through a comprehensive data engineering pipeline.
 
 
 ![Architecture](src/screenshots/architecture.png)
