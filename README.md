@@ -3,7 +3,7 @@
 This project analyzes computer science student data through a comprehensive data engineering pipeline.
 
 
-![Architecture](src\screenshots\architecture.png)
+![Architecture](src/screenshots/architecture.png)
 
 
 
@@ -75,15 +75,15 @@ This project analyzes computer science student data through a comprehensive data
    - Drag a **Data Flow Task** to the Control Flow tab.
    - Double-click the Data Flow Task to enter the Data Flow tab.
    - Drag a **Flat File Source** to the Data Flow tab and configure it to point to your `cs_students.csv` file.
-   ![alt text](src\screenshots\image.png)
+   ![alt text](src/screenshots/image.png)
    - Drag an **OLE DB Destination** to the Data Flow tab and connect it to the Flat File Source.
-   ![alt text](src\screenshots\image-1.png)
+   ![alt text](src/screenshots/image-1.png)
    - Configure the OLE DB Destination to point to the `cs_students` table in the `StudentDB`.
    
-   -- ![alt text](src\screenshots\image-3.png)
-   -- ![alt text](src\screenshots\image-2.png)
+   -- ![alt text](src/screenshots/image-3.png)
+   -- ![alt text](src/screenshots/image-2.png)
    - Execute the package to ingest the data.
-    ![alt text](src\screenshots\image-4.png)
+    ![alt text](src/screenshots/image-4.png)
 
 ### Verifying the Setup
 
