@@ -17,6 +17,8 @@ FROM Egyptian_Students;
 **Description**: This query provides all available student information across all attributes, offering a complete view of the dataset.  
 **Logic**: It selects all columns from the dataset to show each student’s details.
 
+---
+
 **2nd Query:** Retrieve the average grade for Subject_1
 
 **Question**: What is the average grade of all students in Subject_1?
@@ -29,6 +31,8 @@ FROM Egyptian_Students;
 
 **Description**: This query returns the average grade for Subject_1 to assess the overall student performance in this subject.  
 **Logic**: It calculates the average grade in Subject_1 using the AVG() function.
+
+---
 
 **3rd Query: List students with parents having higher education degrees**
 
@@ -47,6 +51,8 @@ AND Mother_Degree IN ('Bachelor', 'Master', 'PhD');
 **Description**: This query lists students whose parents both have a higher education degree (Bachelor's or above).  
 **Logic**: It filters for students where both the father and mother have a degree of at least Bachelor.
 
+---
+
 **4th Query:** Identify students in the IGCSE program
 
 **Question**: Which students are enrolled in the IGCSE education type?
@@ -62,6 +68,8 @@ WHERE Education_Type = 'IGCSE';
 **Description**: This query retrieves the names of students participating in the IGCSE program.  
 **Logic**: It filters students by their Education_Type being "IGCSE."
 
+---
+
 **5th Query:** Count students by education type
 
 **Question**: How many students are enrolled in each type of education?
@@ -76,6 +84,8 @@ GROUP BY Education_Type;
 
 **Description**: This query provides the number of students enrolled in each education type, helping identify which programs are the most popular.  
 **Logic**: It groups the students by Education_Type and counts the entries in each group.
+
+---
 
 **6th Query:** Determine the most common parental education levels
 
@@ -94,6 +104,8 @@ ORDER BY count DESC;
 **Description**: This query identifies the most common education levels of the parents in the dataset.  
 **Logic**: It groups students by both Father_Degree and Mother_Degree and counts how often each combination occurs.
 
+---
+
 **7th Query:** List students with grades above 90% in Subject_5
 
 **Question**: Which students scored higher than 90% in Subject_5?
@@ -108,6 +120,8 @@ WHERE Subject_5 > 90;
 
 **Description**: This query returns the names and grades of students who achieved more than 90% in Subject_5.  
 **Logic**: It filters students whose grades in Subject_5 exceed 90.
+
+---
 
 **8th Query:** Calculate average grades by education type
 
@@ -132,6 +146,8 @@ GROUP BY Education_Type;
 **Description**: This query calculates the average grades for each subject across different education types (IGCSE, IB, Thanweya).  
 **Logic**: It groups students by Education_Type and uses the AVG() function to compute the average grade for each subject.
 
+---
+
 **9th Query:** Find percentage of students with grades above 80% in all subjects
 
 **Question**: What percentage of students scored more than 80% in all subjects?
@@ -151,6 +167,8 @@ AND Subject_9 > 80 AND Subject_10 > 80;
 **Description**: This query calculates the percentage of students with grades above 80% in all subjects.  
 **Logic**: It counts students with grades over 80% in all 10 subjects and divides by the total number of students to calculate the percentage.
 
+---
+
 **10th Query:** Count students by parental education and education type
 
 **Question**: How many students are enrolled in each education type based on their parents' education levels?
@@ -165,6 +183,8 @@ GROUP BY Father_Degree, Mother_Degree, Education_Type;
 
 **Description**: This query counts the number of students grouped by parental education levels and education type.  
 **Logic**: It groups students by Father_Degree, Mother_Degree, and Education_Type, and counts the occurrences.
+
+---
 
 **11th Query:** List students with grades below 50% in more than 3 subjects
 
@@ -207,6 +227,8 @@ WHERE subjects_below_50 > 3;
 **Description**: This query identifies students who have underperformed in more than three subjects with scores below 50%.  
 **Logic**: It counts how many subjects each student scored below 50% and filters those with more than three low scores.
 
+---
+
 **12th Query:** Count students with at least one parent having a Master’s or PhD degree
 
 **Question**: How many students have at least one parent with a Master’s or PhD degree?
@@ -223,6 +245,8 @@ OR Mother_Degree IN ('Master', 'PhD');
 
 **Description**: This query provides the number of students who have at least one parent with an advanced degree (Master's or PhD).  
 **Logic**: It counts students where either the father or mother has an education level of Master’s or PhD.
+
+---
 
 **13th Query:** List students with grades over 80% in all subjects
 
@@ -245,6 +269,8 @@ AND Subject_9 > 80 AND Subject_10 > 80;
 **Description**: This query lists students who have excelled with scores above 80% in every subject.  
 **Logic**: It filters students by their grades, requiring that all subject scores be greater than 80%.
 
+---
+
 **14th Query:** Count students by their age group
 
 **Question**: How many students are there in each age group (14-18 years old)?
@@ -259,6 +285,8 @@ GROUP BY Student_Age;
 
 **Description**: This query counts the number of students in each age group, helping to analyze the distribution of ages in the dataset.  
 **Logic**: It groups students by their age and counts how many students fall into each group.
+
+---
 
 **15th Query:** Calculate the average grades of students by parental education
 
