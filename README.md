@@ -74,11 +74,11 @@ This project analyzes computer science student data through a comprehensive data
    - Create a new SSIS project.
    - Drag a **Data Flow Task** to the Control Flow tab.
    - Double-click the Data Flow Task to enter the Data Flow tab.
-   - Drag a **Flat File Source** to the Data Flow tab and configure it to point to your `cs_students.csv` file.
+   - Drag a **Flat File Source** to the Data Flow tab and configure it to point to your `data/egypt_education_dataset.csv` file.
    ![alt text](src/screenshots/image.png)
    - Drag an **OLE DB Destination** to the Data Flow tab and connect it to the Flat File Source.
    ![alt text](src/screenshots/image-1.png)
-   - Configure the OLE DB Destination to point to the `cs_students` table in the `StudentDB`.
+   - Configure the OLE DB Destination to point to the `data/egypt_education_dataset.csv` table in the `Student` Database.
    
    -- ![alt text](src/screenshots/image-3.png)
    -- ![alt text](src/screenshots/image-2.png)
@@ -106,10 +106,37 @@ This project analyzes computer science student data through a comprehensive data
       ,[Subject_8]
       ,[Subject_9]
       ,[Subject_10]
-  FROM [egyptian_students].[dbo].[Egyptian_Students]
+   FROM [egyptian_students].[dbo].[Egyptian_Students]
    ```
-
 3. Run basic analysis queries (examples in `src/database/analysis_queries.sql`)
+---
 
-## Project Structure
+## Week 2: Data Warehousing and Python Programming
+
+### Prerequisites
+
+- Microsoft SQL Data Warehouse
+- Python 3.7+
+- pip (Python package manager)
+
+### Setup Instructions
+
+1. **Data Warehouse Implementation:**
+   - Implement a SQL Data Warehouse to aggregate and manage large volumes of data for analytical purposes.
+
+2. **Data Integration:**
+   - Load data from various sources into the data warehouse.
+
+3. **Python Programming:**
+   - Develop Python scripts to interact with the SQL database.
+   - Perform data extraction and prepare data for analysis.
+
+### Tools:
+- Microsoft SQL Data Warehouse
+- Python (Pandas, SQLAlchemy)
+
+### Deliverables:
+- A functioning SQL Data Warehouse with integrated data
+- Python scripts for data extraction and preparation
+
 
