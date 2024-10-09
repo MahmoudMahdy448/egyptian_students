@@ -118,6 +118,8 @@ By gathering these requirements, we ensure that the data warehouse can support b
 
 The **star schema** design will be structured as follows:
 
+![alt text](../screenshots/dwh-schema-erd.png)
+
 ### 1. **Fact Table: `Fact_Student_Performance`**
    - **Granularity**: Each record will represent a student’s performance in one subject.
    - **Measures**: Grades for each subject.
