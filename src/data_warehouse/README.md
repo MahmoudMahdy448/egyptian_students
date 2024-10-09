@@ -242,7 +242,7 @@ This design ensures optimal performance for querying and reporting while making 
 ### 1.3. Monitor the Data Pipeline
 - Monitor the pipeline’s execution in **Data Factory** to ensure the data is successfully copied from the SQL Server database to the Azure Data Lake Gen2.
 - Once successful, the data will be stored in the specified **Azure Data Lake** container.
-    ![alt text](src/screenshots/copy-successful.png)
+    ![alt text](../screenshots/copy-successful.png)
 
 
 ---
