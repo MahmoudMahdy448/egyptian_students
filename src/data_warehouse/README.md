@@ -264,7 +264,7 @@ For the **Egyptian_Students** dataset, a star schema is a suitable data warehous
 Below is the SQL DDL (Data Definition Language) to implement the schema:
 
 ```sql
--- Fact Table
+-- Fact Table: Student Performance
 CREATE TABLE Fact_Student_Performance (
     Student_ID INT NOT NULL,
     Education_Type_ID INT NOT NULL,
@@ -272,105 +272,51 @@ CREATE TABLE Fact_Student_Performance (
     Mother_Degree_ID INT,
     Subject_1_Grade FLOAT,
     Subject_2_Grade FLOAT,
-    -- Additional subject columns
-    PRIMARY KEY (Student_ID, Education_Type_ID)
+    Subject_3_Grade FLOAT,
+    Subject_4_Grade FLOAT,
+    Subject_5_Grade FLOAT,
+    Subject_6_Grade FLOAT,
+    Subject_7_Grade FLOAT,
+    Subject_8_Grade FLOAT,
+    Subject_9_Grade FLOAT,
+    Subject_10_Grade FLOAT,
+    CONSTRAINT UQ_Fact_Student_Performance UNIQUE (Student_ID, Education_Type_ID) NOT ENFORCED
 );
 
 -- Dimension Table: Students
 CREATE TABLE Dim_Student (
-    Student_ID INT IDENTITY(1,1) PRIMARY KEY,
+    Student_ID INT IDENTITY(1,1),
     Student_Name NVARCHAR(50),
     Student_Age INT,
-    Student_Year NVARCHAR(20)
+    Student_Year NVARCHAR(20),
+    CONSTRAINT UQ_Dim_Student UNIQUE (Student_ID) NOT ENFORCED
 );
 
 -- Dimension Table: Education Type
 CREATE TABLE Dim_Education_Type (
-    Education_Type_ID INT IDENTITY(1,1) PRIMARY KEY,
-    Education_Type NVARCHAR(50)
+    Education_Type_ID INT IDENTITY(1,1),
+    Education_Type NVARCHAR(50),
+    CONSTRAINT UQ_Dim_Education_Type UNIQUE (Education_Type_ID) NOT ENFORCED
 );
 
 -- Dimension Table: Parental Education (Father)
 CREATE TABLE Dim_Parental_Education_Father (
-    Father_Degree_ID INT IDENTITY(1,1) PRIMARY KEY,
-    Father_Degree NVARCHAR(50)
+    Father_Degree_ID INT IDENTITY(1,1),
+    Father_Degree NVARCHAR(50),
+    CONSTRAINT UQ_Dim_Parental_Education_Father UNIQUE (Father_Degree_ID) NOT ENFORCED
 );
 
 -- Dimension Table: Parental Education (Mother)
 CREATE TABLE Dim_Parental_Education_Mother (
-    Mother_Degree_ID INT IDENTITY(1,1) PRIMARY KEY,
-    Mother_Degree NVARCHAR(50)
+    Mother_Degree_ID INT IDENTITY(1,1),
+    Mother_Degree NVARCHAR(50),
+    CONSTRAINT UQ_Dim_Parental_Education_Mother UNIQUE (Mother_Degree_ID) NOT ENFORCED
 );
+
+-- Fact Table Foreign Key Relationships
+-- Azure Synapse does not support enforced foreign key constraints,
+-- so relationships must be handled through ETL or business logic.
 ```
-
-### 2.3. Load Data from Data Lake to SQL Pool
-
-#### 2.3.1. Use PolyBase or COPY INTO to Load Data
-1. **Use PolyBase** or the **COPY INTO** command to load data from the **Azure Data Lake Gen2** into the SQL Pool.
-
-```sql
--- Example COPY INTO command to load data
-COPY INTO Fact_Student_Performance
-FROM 'https://<storage-account-name>.blob.core.windows.net/<container-name>/egyptian_students.csv'
-WITH (
-    FILE_TYPE = 'CSV',
-    FIELDTERMINATOR = ',',
-    ROWTERMINATOR = '\n',
-    FIRSTROW = 2
-);
-```
-
-2. **Configure the External Data Source** (if using PolyBase):
-
-```sql
-CREATE EXTERNAL DATA SOURCE MyExternalDataSource
-WITH (
-    TYPE = HADOOP,
-    LOCATION = 'abfss://<container-name>@<storage-account-name>.dfs.core.windows.net'
-);
-
-CREATE EXTERNAL FILE FORMAT MyFileFormat
-WITH (
-    FORMAT_TYPE = DELIMITEDTEXT,
-    FORMAT_OPTIONS (
-        FIELD_TERMINATOR = ',',
-        STRING_DELIMITER = '"',
-        FIRST_ROW = 2
-    )
-);
-
-CREATE EXTERNAL TABLE External_Egyptian_Students (
-    -- Define columns matching the CSV structure
-    Student_Name NVARCHAR(50),
-    Student_Age INT,
-    -- Additional columns
-)
-WITH (
-    LOCATION = '/egyptian_students.csv',
-    DATA_SOURCE = MyExternalDataSource,
-    FILE_FORMAT = MyFileFormat
-);
-```
-
-### 2.4. Transform and Load Data into the DWH Schema
-
-After loading the data from **Azure Data Lake** into staging tables or external tables, perform necessary transformations and load it into the respective **fact** and **dimension** tables.
-
-- **Transformations**: Data might need to be cleaned, validated, or transformed to match the data warehouse schema.
-- **ETL Process**: Implement any necessary ETL logic using **Azure Data Factory** or **SQL scripts** in the Synapse SQL Pool.
+![alt text](../screenshots/dwh-schema.png)
 
 ---
-
-## Conclusion
-
-You have successfully:
-1. Integrated your local SQL Server with Azure using **Azure Data Factory**.
-2. Transferred your data into **Azure Data Lake Gen2**.
-3. Designed and implemented a **Data Warehouse Model** in the **Azure Synapse SQL Pool**.
-4. Loaded the data from **Azure Data Lake** into the **SQL Pool** using **PolyBase** or **COPY INTO**.
-
-Next steps involve optimizing your data warehouse for reporting and analysis by creating necessary indexes and optimizing query performance.
-
-```
-
-This step-by-step documentation can be appended to your README file to outline the integration of SQL Server with Azure Data Lake using Data Factory, followed by the data warehouse model implementation in Azure Synapse SQL Pool.
